@@ -2,7 +2,7 @@
 .twitter-typeahead .tt-input, .twitter-typeahead .tt-hint { font-size: 25px; width: 100%; margin: 0px; padding: 8px 12px; outline: none; }
 .twitter-typeahead .tt-hint { color: #999; }
 .twitter-typeahead .tt-dropdown-menu { width: 100%; padding: 0; background-color: #fff; }
-.twitter-typeahead .tt-dropdown-menu .tt-suggestion { text-align: left; padding: 3px 20px; font-size: 18px; line-height: 24px; color:black;}
+.twitter-typeahead .tt-dropdown-menu .tt-suggestion { text-align: left; padding: 3px 20px; font-size: 18px; line-height: 24px; color:black; border-bottom: 1px solid #33b780}
 .twitter-typeahead .tt-dropdown-menu .tt-suggestion.tt-cursor { color: #fff; background-color: #0097cf; }
 .twitter-typeahead .tt-dropdown-menu .tt-suggestion em { font-weight: bold;  color:#33b780; }
 input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {

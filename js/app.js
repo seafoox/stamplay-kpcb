@@ -8,12 +8,13 @@ $(document).ready(function(){
     }
   $('.slides-kpcb').slick({
     "infinite": false,
+    lazyLoad: 'ondemand',
      centerMode: false,
-     arrows: false
+     arrows: true
    });
   $('.slides-kpcb').slick('slickGoTo', slideNumber);
   $('.slides-kpcb').on('beforeChange', function(event, slick, currentSlide, nextSlide){
-  
+    slideNumber = nextSlide;
     DISQUS.reset({
       reload: true,
       config: function () {  
@@ -55,28 +56,33 @@ $(document).ready(function(){
     $('#search').val('')
   })
 
-  $('#fbshare').on('click', function(e){ 
-      FB.ui({
-        method: 'share_open_graph',
-        action_type: 'og.likes',
-        action_properties: JSON.stringify({
-          object: urlToShare,
-          image: picToShare
-        })
-      }, function(response){});
+  function popupwindow(url, title, w, h) {
+    var left = (screen.width/2)-(w/2);
+    var top = (screen.height/2)-(h/2);
+    return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+  } 
+
+  $('#fbshare').on('click', function(e){
+    urlToShare = 'https://kpcb2015.stamplayapp.com#!slide='+slideNumber;
+    picToShare = 'https://kpcb2015.stamplayapp.com'+$('.slick-active img').attr('src').substr(1);
+    FB.ui({
+      method: 'share_open_graph',
+      action_type: 'og.likes',
+      action_properties: JSON.stringify({
+        object: urlToShare,
+        image: picToShare
+      })
+    }, function(response){});
   })
   
   $('#twittershare').on('click', function(e){ 
-    //TODO
-
-    //Comment and Share @kpcb 2015 Internet Trends via @stamplay #InternetTrends
-
+    popupwindow('https://twitter.com/intent/tweet?text=Comment%20and%20Share%20@kpcb%202015%20Internet%20Trends%20via%20@stamplay%20#InternetTrends','Twitter',800,300)
   })
   $('#linkedinshare').on('click', function(e){ 
-    //TODO
-
-    //Comment and Share @kpcb 2015 Internet Trends via @stamplay #InternetTrends
-    //Customize image to be shared
+    urlToShare = 'https://kpcb2015.stamplayapp.com#!slide='+slideNumber;
+    var title = 'kpcb2015';
+    var source = 'Stamplay';
+    popupwindow('https://www.linkedin.com/shareArticle?mini=true&url='+urlToShare+'&title='+title+'&summary=Comment%20and%20Share%20@kpcb%202015%20Internet%20Trends%20via%20@stamplay%20#InternetTrends&source='+source, 'Linkedin' ,800,450)
   })
 
 }); 
