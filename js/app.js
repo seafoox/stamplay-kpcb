@@ -33,4 +33,15 @@ $(document).ready(function(){
   }).on('typeahead:selected', function (e, obj) {
     console.log(obj)
   });
+
+
+  $('#opensearch').on('click', function(e){
+    $('#searchbar').show();
+    $('#search').focus()
+  })
+
+  $('#closesearch').on('click', function(e){
+    $('#searchbar').hide();    
+  })
+
 }); 
