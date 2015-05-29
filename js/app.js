@@ -57,10 +57,26 @@ $(document).ready(function(){
 
   $('#fbshare').on('click', function(e){ 
       FB.ui({
-        method: 'share',
-        href: urlToShare
+        method: 'share_open_graph',
+        action_type: 'og.likes',
+        action_properties: JSON.stringify({
+          object: urlToShare,
+          image: picToShare
+        })
       }, function(response){});
   })
-      
+  
+  $('#twittershare').on('click', function(e){ 
+    //TODO
+
+    //Comment and Share @kpcb 2015 Internet Trends via @stamplay #InternetTrends
+
+  })
+  $('#linkedinshare').on('click', function(e){ 
+    //TODO
+
+    //Comment and Share @kpcb 2015 Internet Trends via @stamplay #InternetTrends
+    //Customize image to be shared
+  })
 
 }); 
