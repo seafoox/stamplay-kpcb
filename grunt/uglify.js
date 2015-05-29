@@ -8,7 +8,7 @@ module.exports = {
 			sourceMap: true
 		},
 		files: {
-			'app/.min.js': ['app/.js']
+			'main.min.js': ['main.js']
 		}
 	}
 }
