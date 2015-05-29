@@ -13,16 +13,14 @@ $(document).ready(function(){
    });
   $('.slides-kpcb').slick('slickGoTo', slideNumber);
   $('.slides-kpcb').on('beforeChange', function(event, slick, currentSlide, nextSlide){
-    
+  
     DISQUS.reset({
       reload: true,
       config: function () {  
-        console.log(this)
         this.page.identifier = 'slide'+nextSlide; 
         this.page.url = 'https://kpcb2015.stamplayapp.com#!slide='+nextSlide;
       }
     });
-
     window.location.hash = '#!slide='+nextSlide
   });
   var algolia = algoliasearch('7TMV8F22UN', 'b5e5aa05c764aa1718bc96b793078703');
@@ -41,18 +39,20 @@ $(document).ready(function(){
       }
     }
   }).on('typeahead:selected', function (e, obj) {
-    $('.slides-kpcb').slick('slickGoTo', parseInt(obj.page)+1);
+    $('.slides-kpcb').slick('slickGoTo', parseInt(obj.page)-1);
     $('#searchbar').hide(); 
     $('#search').val('')
   });
 
   $('#opensearch').on('click', function(e){
     $('#searchbar').show();
+    $('#search').val('')
     $('#search').focus()
   })
 
   $('#closesearch').on('click', function(e){
-    $('#searchbar').hide();    
+    $('#searchbar').hide(); 
+    $('#search').val('')
   })
 
   $('#fbshare').on('click', function(e){ 
