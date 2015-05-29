@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="./bower_components/materialize/dist/css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" type="text/css" href="./external_components/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="./external_components/slick/slick-theme.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  </head>
+  <body class="blue-grey darken-1">
+  
+  <nav style="margin-bottom:20px;">
+    <div class="nav-wrapper light-blue darken-3">
+      <a href="#" class="brand-logo center">Logo</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="slides-kpcb">
+      <div><img src="./images/slides/kpcb_1.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_2.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_3.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_4.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_5.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_6.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_7.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_8.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_9.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_10.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_11.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_11.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_12.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_13.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_14.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_15.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_16.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_17.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_18.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_19.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_20.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_21.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_22.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_23.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_24.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_25.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_26.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_27.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_28.png" style="margin: auto;"></img></div>
+      <div><img src="./images/slides/kpcb_29.png" style="margin: auto;"></img></div>
+    </div>
+  </div> 
+
+  </body>
+  <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="./bower_components/materialize/dist/js/materialize.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="./external_components/slick/slick.min.js"></script>
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+       var queryString = window.location.hash
+        var varArray = queryString.split("="); //eg. index.html?msg=1
+        var param1 = varArray[0];
+        slideNumber = 0
+        if(param1=='#slide'){
+          slideNumber = varArray[1];
+        }
+      $('.slides-kpcb').slick({
+        "infinite": false,
+         centerMode: false,
+         arrows: false,  
+         dots: true,
+      });
+      $('.slides-kpcb').slick('slickGoTo', slideNumber);
+      $('.slides-kpcb').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+        window.location.hash = '#slide='+nextSlide
+      });
+    });
+  </script>
+</html>
