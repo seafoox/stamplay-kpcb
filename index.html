@@ -239,11 +239,12 @@
     <div class="container">
       <div class="row">
         <div class="col s10 offset-s1 center-align">
-          Share this slide:
-          <a class="waves-effect waves-light btn blue lighten-1"><i class="fa fa-twitter left"></i>Twitter</a>
-          <a class="waves-effect waves-light btn blue darken-4"><i class="fa fa-facebook left"></i>Facebook</a>
-          <a class="waves-effect waves-light btn blue darken-3"><i class="fa fa-linkedin left"></i>Linkedin</a>
-                    
+          <p>
+            Share this slide:
+          <a id="twittershare" class="waves-effect waves-light btn blue lighten-1"><i class="fa fa-twitter left"></i>Twitter</a>
+          <a id="fbshare" class="waves-effect waves-light btn blue darken-4"><i class="fa fa-facebook left"></i>Facebook</a>
+          <a id="linkedinshare" class="waves-effect waves-light btn blue darken-3"><i class="fa fa-linkedin left"></i>Linkedin</a>
+          </p>
         </div>
       </div>
     </div>
@@ -272,13 +273,32 @@
 
 
   </body>
-
+  
   <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="./bower_components/materialize/dist/js/materialize.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <script type="text/javascript" src="./external_components/slick/slick.min.js"></script>
   <script src="https://cdn.jsdelivr.net/typeahead.js/0.10.5/typeahead.jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+
+   <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '380685778808999',
+          xfbml      : true,
+          version    : 'v2.3'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+
 
   <script type="text/javascript" src="./js/app.js"></script>
 </html>
