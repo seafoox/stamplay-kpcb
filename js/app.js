@@ -3,7 +3,7 @@ $(document).ready(function(){
     var varArray = queryString.split("="); //eg. index.html?msg=1
     var param1 = varArray[0];
     slideNumber = 0
-    if(param1=='#slide'){
+    if(param1=='#!slide'){
       slideNumber = varArray[1];
     }
   $('.slides-kpcb').slick({
@@ -19,11 +19,11 @@ $(document).ready(function(){
       config: function () {  
         console.log(this)
         this.page.identifier = 'slide'+nextSlide; 
-        this.page.url = 'https://kpcb2015.stamplayapp.com#slide='+nextSlide;
+        this.page.url = 'https://kpcb2015.stamplayapp.com#!slide='+nextSlide;
       }
     });
 
-    window.location.hash = '#slide='+nextSlide
+    window.location.hash = '#!slide='+nextSlide
   });
   var algolia = algoliasearch('7TMV8F22UN', 'b5e5aa05c764aa1718bc96b793078703');
   var index = algolia.initIndex('slides');
