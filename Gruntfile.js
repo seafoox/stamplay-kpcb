@@ -1,8 +1,7 @@
 module.exports = function (grunt) {
   'use strict';
 
-  require('./grunt-task/dev')(grunt);
-  require('./grunt-task/build')(grunt);
+  require('./grunt-task/build-task')(grunt);
 
 
   require('load-grunt-config')(grunt, {

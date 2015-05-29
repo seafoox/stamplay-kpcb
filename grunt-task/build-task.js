@@ -6,4 +6,9 @@ module.exports = function (grunt) {
 		'requirejs:build',
 		'uglify:build'
 	]);
+
+	grunt.registerTask('build-img', [
+		'imagemin:default',
+	]);
+
 }
