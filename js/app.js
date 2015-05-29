@@ -17,9 +17,9 @@ $(document).ready(function(){
   });
   var algolia = algoliasearch('7TMV8F22UN', 'b5e5aa05c764aa1718bc96b793078703');
   var index = algolia.initIndex('slides');
-  $('#user-search').typeahead({hint: false}, {
-    source: index.ttAdapter({hitsPerPage: 8}),
-    displayKey: 'page',
+  $('#search').typeahead({hint: false}, {
+    source: index.ttAdapter({hitsPerPage: 5}),
+    displayKey: 'text',
     templates: {
       suggestion: function(hit) {
           return '<div class="hit">' +
@@ -31,7 +31,9 @@ $(document).ready(function(){
       }
     }
   }).on('typeahead:selected', function (e, obj) {
-    console.log(obj)
+    $('.slides-kpcb').slick('slickGoTo', parseInt(obj.page)+1);
+    $('#searchbar').hide(); 
+    $('#search').val('')
   });
 
 
