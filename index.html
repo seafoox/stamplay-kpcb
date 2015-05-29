@@ -8,7 +8,14 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <meta property="fb:app_id" content="380685778808999" />
+    <meta property="og:title" content="Internet Trends 2015 – Comment and Share KPCB 2015 Internet Trends" />
+    <meta property="og:description" content="A VC-oriented hack built with Stamplay." />
+    <meta property="og:image" content="https://kpcb2015.stamplayapp.com/images/logo.jpg" />
+
   </head>
+
   <body class="blue-grey darken-1">
   
     <nav>
@@ -273,6 +280,29 @@
 
 
   </body>
+
+   <script>
+
+    var urlToShare = 'https://kpcb2015.stamplayapp.com/#slide=0';
+    var picToShare = 'https://kpcb2015.stamplayapp.com/images/slides/kpcb_1.png';
+
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '380685778808999',
+        xfbml      : true,
+        version    : 'v2.3'
+      });        
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
+
   
   <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="./bower_components/materialize/dist/js/materialize.min.js"></script>
@@ -280,25 +310,6 @@
   <script type="text/javascript" src="./external_components/slick/slick.min.js"></script>
   <script src="https://cdn.jsdelivr.net/typeahead.js/0.10.5/typeahead.jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-
-   <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '380685778808999',
-          xfbml      : true,
-          version    : 'v2.3'
-        });
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script>
-
 
   <script type="text/javascript" src="./js/app.js"></script>
 </html>
