@@ -6,7 +6,7 @@ $(document).ready(function(){
   slideNumber = 0
   if(param1=='#!slide'){
     slideNumber = varArray[1];
-    currentUrl = 'https://kpcb2015.stamplayapp.com#!slide='+slideNumber;
+    currentUrl = 'https://www.internet-trends.org#!slide='+slideNumber;
   }
 
   $('.slides-kpcb').slick({
@@ -18,7 +18,7 @@ $(document).ready(function(){
   $('.slides-kpcb').slick('slickGoTo', slideNumber);
   $('.slides-kpcb').on('beforeChange', function(event, slick, currentSlide, nextSlide){
     slideNumber = nextSlide;
-    currentUrl = 'https://kpcb2015.stamplayapp.com#!slide='+slideNumber;
+    currentUrl = 'https://www.internet-trends.org#!slide='+slideNumber;
     DISQUS.reset({
       reload: true,
       config: function () {  
@@ -68,7 +68,7 @@ $(document).ready(function(){
   } 
 
   $('#fbshare').on('click', function(e){    
-    picToShare = 'https://kpcb2015.stamplayapp.com'+$('.slick-active img').attr('src').substr(1);
+    picToShare = 'https://www.internet-trends.org'+$('.slick-active img').attr('src').substr(1);
     FB.ui({
       method: 'share_open_graph',
       action_type: 'og.likes',
