@@ -1,8 +1,4 @@
 
-Stamplay.init('kpcb2015');
-
-
-
 $(document).ready(function(){
   var queryString = window.location.hash
   var varArray = queryString.split("="); //eg. index.html?msg=1
@@ -12,13 +8,6 @@ $(document).ready(function(){
     slideNumber = varArray[1];
     currentUrl = 'https://kpcb2015.stamplayapp.com#!slide='+slideNumber;
   }
-
-  //Check if user is logged
-  var user = new Stamplay.User().Model;
-  if (user.isLogged()) {
-    $('.logged-user').show(); 
-    $('.guest-user').hide()
-  } 
 
   $('.slides-kpcb').slick({
     "infinite": false,
