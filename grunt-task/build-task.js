@@ -2,7 +2,8 @@ module.exports = function (grunt) {
 	grunt.registerTask('build', [
 		'concat:js',
 		'uglify:build',
-		'cssmin:style'
+		'concat:css',
+		'cssmin:css'
 	]);
 
 	grunt.registerTask('build-img', [
