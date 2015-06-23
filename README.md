@@ -1,6 +1,6 @@
 # stamplay-kpcb
 
-This is a demo app to show how to use Algolia with Stamplay. 
+This is a [demo app](https://kpcb2015.stamplayapp.com/) to show how to use Algolia with Stamplay. 
 Every year KPCB publish its Internet Trends report. An 200-ish long slides deck is full of data, information and insights, but it can be overwhelming and hard to navigate.
 
 We took the presentation and created an app in which you can search for, comment on and share every single slide from the Internet Trends report.
