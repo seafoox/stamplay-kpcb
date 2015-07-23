@@ -11,3 +11,43 @@ input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly
 }
 #closesearch{ cursor:pointer;}
 .slides-kpcb img {margin: auto; width:100%}
+
+.hit-container {
+	clear: both;
+	padding: 10px 20px;
+	position: relative;
+	display: table;
+	font-weight: normal;
+	cursor: pointer;
+}
+
+.hit .left-side,
+.hit .right-side {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	display: table-cell;
+	vertical-align: top;
+}
+
+.hit .left-side {
+	width: 200px;
+	position: relative;
+	text-align: left;
+}
+
+	.hit .left-side .picture {
+		width: 180px;
+		border: solid 1px #ccc;
+	}
+
+.hit .left-right {
+}
+
+	.hit .right-side .page-number {
+		color: #656565;
+	}
+
+.hit em {
+	font-style: normal;
+
+}

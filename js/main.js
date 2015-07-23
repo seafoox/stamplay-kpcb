@@ -118,14 +118,17 @@ resolve:function(a){return d.resolve(a)},delay:function(a){return new d(function
 typeof window?window:{})},{}],16:[function(c,k,f){k.exports=function(c,b){c=/\?/.test(c)?c+"&":c+"?";return c+n.encode(b)};var n=c(4)},{4:4}],17:[function(c,k,f){function n(c,f){var g=this;"function"===typeof Error.captureStackTrace?Error.captureStackTrace(this,this.constructor):g.stack=Error().stack||"Cannot get a stacktrace, browser is too old";this.name=this.constructor.name;this.message=c||"Unknown error";f&&b(f,function(b,c){g[c]=b})}function g(b,c){function f(){var g=Array.prototype.slice.call(arguments,
 0);"string"!==typeof g[0]&&g.unshift(c);n.apply(this,g);this.name="AlgoliaSearch"+b+"Error"}h(f,n);return f}var b=c(10),h=c(11);h(n,Error);k.exports={AlgoliaSearchError:n,UnparsableJSON:g("UnparsableJSON","Could not parse the incoming response as JSON, see err.more for details"),RequestTimeout:g("RequestTimeout","Request timedout before getting a response"),Network:g("Network","Network issue, see err.more for details"),JSONP:g("JSONP","JSONP failed"),Unknown:g("Unknown","Unknown error occured")}},
 {10:10,11:11}],18:[function(c,k,f){k.exports="3.4.0"},{}]},{},[14])(14)});
+
 $(document).ready(function(){
-   var queryString = window.location.hash
-    var varArray = queryString.split("="); //eg. index.html?msg=1
-    var param1 = varArray[0];
-    slideNumber = 0
-    if(param1=='#!slide'){
-      slideNumber = varArray[1];
-    }
+  var queryString = window.location.hash
+  var varArray = queryString.split("="); //eg. index.html?msg=1
+  var param1 = varArray[0];
+  slideNumber = 0
+  if(param1=='#!slide'){
+    slideNumber = varArray[1];
+    currentUrl = 'https://www.internet-trends.org#!slide='+slideNumber;
+  }
+
   $('.slides-kpcb').slick({
     "infinite": false,
     lazyLoad: 'ondemand',
@@ -135,27 +138,30 @@ $(document).ready(function(){
   $('.slides-kpcb').slick('slickGoTo', slideNumber);
   $('.slides-kpcb').on('beforeChange', function(event, slick, currentSlide, nextSlide){
     slideNumber = nextSlide;
+    currentUrl = 'https://www.internet-trends.org#!slide='+slideNumber;
     DISQUS.reset({
       reload: true,
       config: function () {  
         this.page.identifier = 'slide'+nextSlide; 
-        this.page.url = 'https://kpcb2015.stamplayapp.com#!slide='+nextSlide;
+        this.page.url = currentUrl;
       }
     });
     window.location.hash = '#!slide='+nextSlide
   });
+
   var algolia = algoliasearch('7TMV8F22UN', 'b5e5aa05c764aa1718bc96b793078703');
   var index = algolia.initIndex('slides');
   $('#search').typeahead({hint: false}, {
-    source: index.ttAdapter({hitsPerPage: 5}),
+    source: index.ttAdapter({hitsPerPage: 3}),
     displayKey: 'text',
     templates: {
       suggestion: function(hit) {
-          return '<div class="hit">' +
-            '<div class="name">' +
-              hit._highlightResult.page.value + ' ' +
-              hit._highlightResult.text.value + ' - ' +
-            '</div>' +
+          return '<div class="hit"><div class="hit-container">' +
+            '<div class="left-side"><img class="picture" src="https://www.internet-trends.org/images/slides/' + hit.image + '" /></div>' +
+            '<div class="right-side">' +
+              '<div class="page-number">Page ' + hit.page + '</div>' +
+              '<div>' + hit._snippetResult.text.value + ' - ' + '</div>'
+            '</div></div>' +
           '</div>';
       }
     }
@@ -182,27 +188,25 @@ $(document).ready(function(){
     return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
   } 
 
-  $('#fbshare').on('click', function(e){
-    urlToShare = 'https://kpcb2015.stamplayapp.com#!slide='+slideNumber;
-    picToShare = 'https://kpcb2015.stamplayapp.com'+$('.slick-active img').attr('src').substr(1);
+  $('#fbshare').on('click', function(e){    
+    picToShare = 'https://www.internet-trends.org'+$('.slick-active img').attr('src').substr(1);
     FB.ui({
       method: 'share_open_graph',
       action_type: 'og.likes',
       action_properties: JSON.stringify({
-        object: urlToShare,
+        object: currentUrl,
         image: picToShare
       })
     }, function(response){});
   })
   
-  $('#twittershare').on('click', function(e){ 
-    popupwindow('https://twitter.com/intent/tweet?text=Comment%20and%20Share%20@kpcb%202015%20Internet%20Trends%20via%20@stamplay%20#InternetTrends','Twitter',800,300)
+  $('#twittershare').on('click', function(e){     
+    popupwindow('https://twitter.com/intent/tweet?text=Comment%20and%20Share%20@kpcb%202015%20Internet%20Trends%20via%20@stamplay%20#InternetTrends&related=stamplay&url='+currentUrl,'Twitter',800,300)
   })
-  $('#linkedinshare').on('click', function(e){ 
-    urlToShare = 'https://kpcb2015.stamplayapp.com#!slide='+slideNumber;
+  $('#linkedinshare').on('click', function(e){     
     var title = 'kpcb2015';
     var source = 'Stamplay';
-    popupwindow('https://www.linkedin.com/shareArticle?mini=true&url='+urlToShare+'&title='+title+'&summary=Comment%20and%20Share%20@kpcb%202015%20Internet%20Trends%20via%20@stamplay%20#InternetTrends&source='+source, 'Linkedin' ,800,450)
+    popupwindow('https://www.linkedin.com/shareArticle?mini=true&url='+currentUrl+'&title='+title+'&summary=Comment%20and%20Share%20@kpcb%202015%20Internet%20Trends%20via%20@stamplay%20#InternetTrends&source='+source, 'Linkedin' ,800,450)
   })
 
 }); 

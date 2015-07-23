@@ -32,15 +32,16 @@ $(document).ready(function(){
   var algolia = algoliasearch('7TMV8F22UN', 'b5e5aa05c764aa1718bc96b793078703');
   var index = algolia.initIndex('slides');
   $('#search').typeahead({hint: false}, {
-    source: index.ttAdapter({hitsPerPage: 5}),
+    source: index.ttAdapter({hitsPerPage: 3}),
     displayKey: 'text',
     templates: {
       suggestion: function(hit) {
-          return '<div class="hit">' +
-            '<div class="name">' +
-              hit._highlightResult.page.value + ' ' +
-              hit._highlightResult.text.value + ' - ' +
-            '</div>' +
+          return '<div class="hit"><div class="hit-container">' +
+            '<div class="left-side"><img class="picture" src="https://www.internet-trends.org/images/slides/' + hit.image + '" /></div>' +
+            '<div class="right-side">' +
+              '<div class="page-number">Page ' + hit.page + '</div>' +
+              '<div>' + hit._snippetResult.text.value + ' - ' + '</div>'
+            '</div></div>' +
           '</div>';
       }
     }
