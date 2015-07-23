@@ -166,7 +166,7 @@ $(document).ready(function(){
       }
     }
   }).on('typeahead:selected', function (e, obj) {
-    $('.slides-kpcb').slick('slickGoTo', parseInt(obj.page)-1);
+    $('.slides-kpcb').slick('slickGoTo', parseInt(obj.page, 10));
     $('#searchbar').hide(); 
     $('#search').val('')
   });
